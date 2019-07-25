@@ -7510,6 +7510,10 @@ video {
 
 /* Your custom CSS here */
 
+textarea {
+  resize: none;
+}
+
 @media (min-width: 640px) {
   .sm\:appearance-none {
     -webkit-appearance: none;

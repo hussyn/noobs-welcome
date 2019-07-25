@@ -6,7 +6,6 @@ import { LoginPage } from './components/Login/LoginPage';
 import LogoutPage from './components/Login/LogoutPage';
 import { RegisterPage } from './components/Register/RegisterPage';
 import { Nav } from './components/Nav';
-
 import {
     withAuthentication,
     withAuthorization,
@@ -17,15 +16,18 @@ function App() {
     return (
         <Router>
             <Nav />
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route
-                path="/logout"
-                component={withAuthorization(conditions.userLoggedIn)(
-                    LogoutPage
-                )}
-            />
+            <div className=" max-w-2xl p-2 container mx-auto">
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegisterPage} />
+
+                <Route
+                    path="/logout"
+                    component={withAuthorization(conditions.userLoggedIn)(
+                        LogoutPage
+                    )}
+                />
+            </div>
         </Router>
     );
 }

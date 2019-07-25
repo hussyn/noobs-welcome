@@ -5,3 +5,6 @@
 @tailwind utilities;
 
 /* Your custom CSS here */
+textarea {
+    resize: none;
+}
