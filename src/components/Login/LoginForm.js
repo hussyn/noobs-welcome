@@ -70,7 +70,7 @@ class LoginFormBase extends Component {
             .doSignInWithEmailAndPassword(email, password)
             .then((authUser) => {
                 this.setState({ ...INITIAL_STATE });
-                this.props.history.push('/add');
+                this.props.history.push('/');
             })
             .catch((error) => {
                 this.setState({ error });

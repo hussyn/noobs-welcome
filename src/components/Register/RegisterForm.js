@@ -122,7 +122,7 @@ class RegisterFormBase extends Component {
             await this.props.firebase.username(username).set(authUser.user.uid);
 
             this.setState({ ...INITIAL_STATE });
-            this.props.history.push('/add');
+            this.props.history.push('/');
         } catch (error) {
             this.setState({ error });
         }
