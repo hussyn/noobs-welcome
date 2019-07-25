@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Home } from './components/Home';
+import { LoginPage } from './components/Login/LoginPage';
+import LogoutPage from './components/Login/LogoutPage';
+import { RegisterPage } from './components/Register/RegisterPage';
+import { Nav } from './components/Nav';
+
+import {
+    withAuthentication,
+    withAuthorization,
+    conditions
+} from './components/Auth';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Nav />
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route
+                path="/logout"
+                component={withAuthorization(conditions.userLoggedIn)(
+                    LogoutPage
+                )}
+            />
+        </Router>
+    );
 }
 
 export default App;
