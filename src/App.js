@@ -11,6 +11,7 @@ import {
     withAuthorization,
     conditions
 } from './components/Auth';
+import EditProfile from './components/User/EditProfile';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
+                <Route path="/profile" component={EditProfile} />
 
                 <Route
                     path="/logout"
