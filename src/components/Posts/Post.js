@@ -37,7 +37,7 @@ export default function Post({ post }) {
                 <button>
                     <FontAwesomeIcon icon={faThumbsUp} />
                 </button>
-                <p class="text-gray-800 text-sm hover:text-blue-500 mt-2">
+                <p class="text-gray-800 text-sm mt-2">
                     Sent at {post.createdAt}
                 </p>
             </div>
