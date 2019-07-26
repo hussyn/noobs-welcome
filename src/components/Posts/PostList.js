@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Post from './Post';
-import { FirebaseContext, withFirebase } from '../Firebase';
+import { withFirebase } from '../Firebase';
 
 class PostList extends Component {
     state = {
@@ -40,7 +40,7 @@ class PostList extends Component {
      
             <div>
                 {this.state.posts.map((post) => (
-                    <Post key={post.id} post={post} />
+                    <Post key={post.uid} post={post} />
                 ))}
             </div>
         );

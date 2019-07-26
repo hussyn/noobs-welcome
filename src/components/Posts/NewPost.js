@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 export class NewPostForm extends Component {
+
+    state = {
+        story: ""
+    }
+
     render() {
         return (
             <form className="bg-white border border-gray-400  rounded px-8 pt-2 pb-2 mb-4">
@@ -16,6 +21,10 @@ export class NewPostForm extends Component {
                     placeholder="What's on your mind?!"
                     id="story"
                     maxLength="2000"
+                    name="story"
+                    onChange={this.handleChange}
+                    value={this.state.story}
+                    onClick={this.addStory}
                 />
 
                 <div className="flex items-center justify-between mt-2">
@@ -28,6 +37,7 @@ export class NewPostForm extends Component {
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
+                        disabled={!this.state.story}
                     >
                         Post
                     </button>
@@ -35,4 +45,14 @@ export class NewPostForm extends Component {
             </form>
         );
     }
+
+    addStory = (event) => {
+        console.log(event);
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
 }

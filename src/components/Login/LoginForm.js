@@ -32,7 +32,9 @@ class LoginFormBase extends Component {
                                     name="email"
                                     onChange={this.handleChange}
                                     value={email}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="example@email.com"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                                    id="email" 
+                                    placeholder="example@email.com"
 
                                 />
                             </div>
@@ -43,7 +45,9 @@ class LoginFormBase extends Component {
                                     name="password"
                                     onChange={this.handleChange}
                                     value={password}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                                    id="password" 
+                                    placeholder="password"
                                 />
                             </div>
                             <div className="mb-4">

@@ -35,7 +35,7 @@ class RegisterFormBase extends Component {
                                     name="email"
                                     onChange={this.handleChange}
                                     value={email}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="example@email.com"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" placeholder="example@email.com"
                                 />
                             </div>
                             <div className="mb-4">
@@ -45,7 +45,7 @@ class RegisterFormBase extends Component {
                                     name="password"
                                     onChange={this.handleChange}
                                     value={password}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="password"
 
                                 />
                             </div>
@@ -56,7 +56,7 @@ class RegisterFormBase extends Component {
                                     name="passwordTwo"
                                     onChange={this.handleChange}
                                     value={passwordTwo}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordTwo" type="password" placeholder="password"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordTwo" placeholder="password"
 
                                 />
                             </div>
@@ -95,7 +95,7 @@ class RegisterFormBase extends Component {
         //Check that username does not exist first
 
         try {
-            const authUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
+            await this.props.firebase.doCreateUserWithEmailAndPassword(
                 email,
                 password
             );
