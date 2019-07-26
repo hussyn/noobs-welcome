@@ -21,7 +21,7 @@ class LoginFormBase extends Component {
         return (
             <FirebaseContext.Consumer>
                 {(firebase) => (
-                    <div className="flex justify-center w-full max-w-xs m-4">
+                    <div className="flex justify-center w-full max-w-xl min-w-lg m-4">
                         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                             <p className="title text-xl text-blue-600 mb-2">Welcome back, Noob</p>
 
