@@ -5,7 +5,6 @@ import { compose } from 'recompose';
 
 const INITIAL_STATE = {
     email: '',
-    username: '',
     password: '',
     passwordTwo: '',
     error: null
@@ -18,12 +17,11 @@ class RegisterFormBase extends Component {
     }
 
     render() {
-        const { email, username, password, passwordTwo, error } = this.state;
+        const { email, password, passwordTwo, error } = this.state;
         const isInvalid =
             password !== passwordTwo ||
             password === '' ||
-            email === '' ||
-            username === '';
+            email === '';
 
         return (
             <FirebaseContext.Consumer>
@@ -36,13 +34,6 @@ class RegisterFormBase extends Component {
                             name="email"
                             onChange={this.handleChange}
                             value={email}
-                        />
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            name="username"
-                            onChange={this.handleChange}
-                            value={username}
                         />
                         <label htmlFor="password">Password</label>
                         <input
@@ -84,42 +75,15 @@ class RegisterFormBase extends Component {
 
     register = async (event) => {
         event.preventDefault();
-        const { username, email, password } = this.state;
+        const { email, password } = this.state;
         console.log('registering');
         //Check that username does not exist first
-        try {
-            const data = await this.props.firebase
-                .username(username)
-                .once('value');
-
-            if (data.val() !== null) {
-                return this.setState({
-                    error: {
-                        message: 'Username is already taken.'
-                    }
-                });
-            }
-            console.log(data.val());
-        } catch (err) {
-            console.error(err);
-            return this.setState({
-                error: {
-                    message: 'Failed to register... oops!'
-                }
-            });
-        }
 
         try {
             const authUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
                 email,
                 password
             );
-            console.log(authUser);
-            await this.props.firebase.user(authUser.user.uid).set({
-                username,
-                email
-            });
-            await this.props.firebase.username(username).set(authUser.user.uid);
 
             this.setState({ ...INITIAL_STATE });
             this.props.history.push('/');

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Post({ post }) {
     return (
-        <div class="rounded overflow-hidden shadow-lg p-4 my-2 xl:m-5 bg-gray-200 item">
+        <div class="rounded overflow-hidden shadow-lg p-4 my-2 bg-gray-200 item">
             <div class="font-bold mb-2 flex ">
                 <ul class="flex justify-between">
                     <li class="mr-5">
