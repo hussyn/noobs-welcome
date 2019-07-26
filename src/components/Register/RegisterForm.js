@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 
 const INITIAL_STATE = {
     email: '',
+    username: '',
     password: '',
     passwordTwo: '',
     error: null
@@ -17,11 +18,13 @@ class RegisterFormBase extends Component {
     }
 
     render() {
-        const { email, password, passwordTwo, error } = this.state;
+        const { email, username, password, passwordTwo, error } = this.state;
         const isInvalid =
             password !== passwordTwo ||
             password === '' ||
+            username == '' ||
             email === '';
+
 
         return (
             <FirebaseContext.Consumer>
@@ -36,6 +39,16 @@ class RegisterFormBase extends Component {
                                     onChange={this.handleChange}
                                     value={email}
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" placeholder="example@email.com"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">Username</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    onChange={this.handleChange}
+                                    value={username}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" placeholder="Username"
                                 />
                             </div>
                             <div className="mb-4">
