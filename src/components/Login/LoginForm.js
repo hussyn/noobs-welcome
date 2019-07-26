@@ -21,36 +21,50 @@ class LoginFormBase extends Component {
         return (
             <FirebaseContext.Consumer>
                 {(firebase) => (
-                    <form>
-                        <h1 className="title">Login</h1>
+                    <div className="flex justify-center w-full max-w-xs m-4">
+                        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <p className="title text-xl text-blue-600 mb-2">Welcome back, Noob</p>
 
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="text"
-                            name="email"
-                            onChange={this.handleChange}
-                            value={email}
-                        />
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            onChange={this.handleChange}
-                            value={password}
-                        />
-                        <button
-                            type="submit"
-                            onClick={this.login}
-                            disabled={isInvalid}
-                        >
-                            Login
-                        </button>
-                        {error && <p>{error.message}</p>}
-                        <p>
-                            Don't have an account?{' '}
-                            <Link to={'/register'}>Register</Link>
-                        </p>
-                    </form>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+                                <input
+                                    type="text"
+                                    name="email"
+                                    onChange={this.handleChange}
+                                    value={email}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="example@email.com"
+
+                                />
+                            </div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+                            <div className="mb-4">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={this.handleChange}
+                                    value={password}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <button
+                                    type="submit"
+                                    onClick={this.login}
+                                    disabled={isInvalid}
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                >
+                                    Login
+                                </button>
+                            </div>
+                            {error && <p>{error.message}</p>}
+                            <p>
+                                Don't have an account?{' '}
+                                <Link to={'/register'}
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                >Register</Link>
+                            </p>
+                        </form>
+                    </div>
                 )}
             </FirebaseContext.Consumer>
         );

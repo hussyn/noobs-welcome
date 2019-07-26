@@ -28,49 +28,68 @@ class RegisterFormBase extends Component {
         return (
             <FirebaseContext.Consumer>
                 {(firebase) => (
-                    <form>
-                        <h1 className="title">Register</h1>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="text"
-                            name="email"
-                            onChange={this.handleChange}
-                            value={email}
-                        />
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            name="username"
-                            onChange={this.handleChange}
-                            value={username}
-                        />
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            onChange={this.handleChange}
-                            value={password}
-                        />
-                        <label htmlFor="password">Password Again</label>
-                        <input
-                            type="password"
-                            name="passwordTwo"
-                            onChange={this.handleChange}
-                            value={passwordTwo}
-                        />
-                        <button
-                            type="submit"
-                            onClick={this.register}
-                            disabled={isInvalid}
-                        >
-                            Register
+                    <div className="flex justify-center w-full max-w-xs m-4">
+                        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+                                <input
+                                    type="text"
+                                    name="email"
+                                    onChange={this.handleChange}
+                                    value={email}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="example@email.com"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">Username</label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    onChange={this.handleChange}
+                                    value={username}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"
+
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={this.handleChange}
+                                    value={password}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password"
+
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="passwordTwo">Password Again</label>
+                                <input
+                                    type="password"
+                                    name="passwordTwo"
+                                    onChange={this.handleChange}
+                                    value={passwordTwo}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordTwo" type="password" placeholder="password"
+
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <button
+                                    type="submit"
+                                    onClick={this.register}
+                                    disabled={isInvalid}
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                >
+                                    Register
                         </button>
-                        {error && <p>{error.message}</p>}
-                        <p>
-                            Already have an account?{' '}
-                            <Link to={'/login'}>Login</Link>
-                        </p>
-                    </form>
+                            </div>
+                            {error && <p>{error.message}</p>}
+                            <p>
+                                Already have an account?{' '}
+                                <Link className="hover:text-blue-400" to={'/login'}>Login</Link>
+                            </p>
+                        </form>
+                    </div>
                 )}
             </FirebaseContext.Consumer>
         );
