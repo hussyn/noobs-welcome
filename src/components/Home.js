@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PostList from './Posts/PostList';
-import { NewPostForm } from './Posts/NewPost';
+import NewPostForm  from './Posts/NewPost';
 import { UserContext } from './Auth';
 export class Home extends Component {
     loggedIn = false;

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { FirebaseContext, withFirebase } from '../Firebase';
+import { withAuthenticatedUser } from "../Auth";
+import { withFirebase} from "../Firebase";
+import { compose } from 'recompose';
 
-class NewPostFormBase extends Component {
+
+class NewPostForm extends Component {
 
     state = {
         story: ""
@@ -9,9 +12,7 @@ class NewPostFormBase extends Component {
 
     render() {
         return (
-            <FirebaseContext.Consumer>
-                {(firebase) => (
-            <form className="bg-white border border-gray-400  rounded px-8 pt-2 pb-2 mb-4">
+            <form className="bg-white border border-gray-400 shadow rounded px-8 pt-2 pb-2 mb-4">
                 <label
                     className="block text-gray-700 text-sm font-bold mb-2"
                     htmlFor="story"
@@ -20,7 +21,7 @@ class NewPostFormBase extends Component {
                 </label>
 
                 <textarea
-                    className="shadow appearance-none border rounded w-full py-5 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none border rounded w-full py-5 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="What's on your mind?!"
                     id="story"
                     maxLength="2000"
@@ -40,23 +41,25 @@ class NewPostFormBase extends Component {
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="submit"
                         disabled={!this.state.story}
-                        onClick={(e) => this.addStory(e,firebase)}
+                        onClick={(e) => this.addStory(e,this.props.firebase)}
                     >
                         Post
                     </button>
                 </div>
             </form>
-                )}
-            </FirebaseContext.Consumer>
         );
     }
 
     addStory = (event, firebase) => {
         event.preventDefault();
-        console.log(firebase);
-        firebase.posts().add({
-            story: this.state.story
-        }).then( doc => {
+        const newStory = {
+            story: this.state.story,
+            userId: this.props.user.uid,
+            likes: 0,
+            username: "jamesqquick"//this.props.user.displayName
+            //TODO: get the username
+        }
+        firebase.posts().add(newStory).then( doc => {
             this.setState({story:""})
         }).catch( err => {
             console.error(err);
@@ -70,4 +73,8 @@ class NewPostFormBase extends Component {
     };
 }
 
-export const NewPostForm = withFirebase(NewPostFormBase);
+
+export default compose(
+        withAuthenticatedUser,
+        withFirebase,
+    )(NewPostForm);

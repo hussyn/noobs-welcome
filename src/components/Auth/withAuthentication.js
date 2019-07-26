@@ -17,11 +17,6 @@ const withAuthentication = Component => {
             this.listener = this.props.firebase.auth.onAuthStateChanged(
                 async (authUser) => {
                     if (authUser) {
-                        // const data = await this.props.firebase.user(authUser.uid)
-                        //     .once('value')
-                        // const username = data.val().username;
-                        // authUser.username = username;
-
                         this.setState({ authUser })
                     }
                     else {
